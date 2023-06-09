@@ -3512,3 +3512,8 @@ input, select, textarea {
 			}
 
 	}
+
+
+.text-warning {
+	color: yellow;
+}
