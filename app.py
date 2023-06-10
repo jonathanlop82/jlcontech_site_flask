@@ -16,13 +16,14 @@ def hello_world():  # put application's code here
         company = request.form.get("company")
         message = request.form.get("message")
 
-        #Action
-        print(name,email,subject,company,message)
-        flash('Gracias por contactarnos, su mensaje ha sido enviado exitosamente, pronto le responderemos!!!')
-        send_mail("Nuevo Prospecto desde Formulario Web", "ventas@jlcontech.com", "ventas@jlcontech.com", name, email, subject, company, message)
-        mensaje_telegram = f'Nuevo Prospecto: Nombre: {name}, Email: {email}, Asunto: {subject}, Empresa: {company}, Mensaje: {message}'
-        send_telegram_message(mensaje_telegram)
-        return render_template('index.html')
+        if name != None:
+            #Action
+            print(name,email,subject,company,message)
+            flash('Gracias por contactarnos, su mensaje ha sido enviado exitosamente, pronto le responderemos!!!')
+            send_mail("Nuevo Prospecto desde Formulario Web", "ventas@jlcontech.com", "ventas@jlcontech.com", name, email, subject, company, message)
+            mensaje_telegram = f'Nuevo Prospecto: Nombre: {name}, Email: {email}, Asunto: {subject}, Empresa: {company}, Mensaje: {message}'
+            send_telegram_message(mensaje_telegram)
+            return render_template('index.html')
 
     return render_template('index.html')
 
